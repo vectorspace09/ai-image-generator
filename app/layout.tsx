@@ -1,10 +1,5 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
-import { Toaster } from "@/components/ui/toaster"
-// import { ThemeProvider } from "@/components/theme-provider"
-import { Sidebar } from "@/components/sidebar"
-
-const inter = Inter({ subsets: ['latin'] })
+import { ClerkProvider } from '@clerk/nextjs';
+import './globals.css';
 
 export const metadata = {
   title: 'AI Text-to-Image Generator',
@@ -17,18 +12,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        {/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem> */}
-          <div className="flex h-screen">
-            <Sidebar />
-            <main className="flex-1 overflow-y-auto p-8">
-              {children}
-            </main>
-          </div>
-          <Toaster />
-        {/* </ThemeProvider> */}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body>
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }

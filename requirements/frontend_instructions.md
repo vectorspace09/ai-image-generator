@@ -56,28 +56,37 @@ if(response.status === 200) {
 #Current file structure
 
 #Current file structure
-/text-to-image-generator
-├── /node_modules              # Installed Node.js modules (auto-generated)
-├── /public                    # Static files (images, fonts, etc.)
-│   └── favicon.ico            # Default Next.js favicon
-├── /styles                    # Global CSS files (optional if using shadcn)
-│   └── globals.css            # Global CSS (can be replaced with shadcn styles)
-├── /pages                     # Next.js Pages and API Routes
-│   ├── /api
-│   │   ├── generate.js        # API route for AI image generation
-│   │   └── auth
-│   │       └── [...nextauth].js  # NextAuth.js configuration for authentication
-│   ├── /auth
-│   │   └── signin.js          # Sign-in page for authentication
-│   └── index.js               # Main page with text-to-image form
-├── /components                # Reusable React components
-│   └── LogoutButton.js        # Component to handle user logout
-├── /shadcn                    # shadcn component files (after running shadcn init)
-│   ├── button.js              # Button component from shadcn
-│   └── input.js               # Input component from shadcn
-├── .env.local                 # Environment variables (API keys, secrets, etc.)
-├── next.config.js             # Next.js configuration file
-├── package.json               # NPM dependencies and scripts
-├── vercel.json                # Vercel configuration file (optional)
-└── README.md                  # Documentation file
 
+FIRST-CURSOR-PROJECT
+├── .next
+├── app
+│   ├── fonts
+│   │   ├── GeistMonoVF.woff
+│   │   └── GeistVF.woff
+│   ├── history
+│   │   └── page.tsx
+│   ├── settings
+│   │   └── page.tsx
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── components
+│   ├── components.json
+│   ├── ImageGenerator.tsx
+│   └── sidebar.tsx
+├── lib
+│   └── utils.ts
+├── node_modules
+├── requirements
+│   ├── frontend_instructions.md
+├── .eslintrc.json
+├── .gitignore
+├── next-env.d.ts
+├── next.config.mjs
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+├── README.md
+├── tailwind.config.ts
+└── tsconfig.json

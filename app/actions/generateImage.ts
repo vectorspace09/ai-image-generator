@@ -1,9 +1,19 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
+import { saveImageHistory } from '@/lib/appwrite'
+import { currentUser } from '@clerk/nextjs/server'
 
 export async function generateImage(prompt: string) {
   try {
+    const user = await currentUser()
+    const UserID = user?.id
+    if (!UserID || !user?.emailAddresses[0]?.emailAddress) {
+      throw new Error('User not authenticated or email not available')
+    }
+
+    const userEmail = user.emailAddresses[0].emailAddress
+
     const response = await fetch('https://api.cloudflare.com/client/v4/accounts/b2c67197adc0298d019076ab73c4d650/ai/run/@cf/stabilityai/stable-diffusion-xl-base-1.0', {
       method: 'POST',
       headers: {
@@ -23,6 +33,9 @@ export async function generateImage(prompt: string) {
     const base64 = Buffer.from(data).toString('base64')
     const imageUrl = `data:image/png;base64,${base64}`
     
+    // Save the generated image to Appwrite
+    await saveImageHistory(userEmail, prompt, imageUrl)
+
     revalidatePath('/')
     return { success: true, imageUrl }
   } catch (error) {
