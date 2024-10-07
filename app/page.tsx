@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import ImageGenerator from "@/components/ImageGenerator";
 import ImageHistory from "@/components/ImageHistory";
 import { auth } from "@clerk/nextjs/server";
-
+export const runtime = 'edge';
 export default async function Home() {
   const { userId } = await auth();
 
