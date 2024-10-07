@@ -1,16 +1,15 @@
-import { ImageGenerator } from '@/components/ImageGenerator'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
-export default function Home() {
+export default function Settings() {
   return (
     <div className="max-w-4xl mx-auto">
       <Card>
         <CardHeader>
-          <CardTitle>Generate Image</CardTitle>
-          <CardDescription>Enter a description to generate an AI image.</CardDescription>
+          <CardTitle>Settings</CardTitle>
+          <CardDescription>Manage your account and preferences.</CardDescription>
         </CardHeader>
         <CardContent>
-          <ImageGenerator />
+          <p>Your settings options will appear here.</p>
         </CardContent>
       </Card>
     </div>
